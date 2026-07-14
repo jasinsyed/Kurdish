@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>ڕێگا · The Path — Zhwan's Study Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600&family=Vazirmatn:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* night sky — the page itself is the space between Kurdistan and China */
+            --night: #101c33;
+            --night-mid: #172743;
+            --night-deep: #0a1220;
+            --night-line: rgba(207, 158, 84, 0.22);
+
+            /* paper — every card is a stamped document held up to the dark */
+            --paper: #f4e8ce;
+            --paper-card: #fdf7e9;
+            --paper-dim: #e8d8b6;
+            --ink: #241f18;
+            --ink-soft: #4a4130;
+
+            /* ink-stamp red — the one bold accent: passport chops, correct answers, CTAs */
+            --vermilion: #c1442a;
+            --vermilion-deep: #8a2e1c;
+            --vermilion-light: #e2694a;
+
+            /* thread gold — borders, dashes, mono labels on night */
+            --gold: #cf9a4c;
+            --gold-bright: #edc580;
+            --gold-dim: #9c7238;
+
+            /* jade — the second accent, a nod to both a Kurdish word and Chinese jade */
+            --jade: #4f8577;
+            --jade-soft: #74a597;
+            --jade-deep: #35594e;
+
+            --mist: #b7c4dc;
+            --mist-dim: rgba(183, 196, 220, 0.65);
+
+            --line: rgba(36, 31, 24, 0.13);
+            --line-strong: rgba(36, 31, 24, 0.22);
+            --shadow-sm: 0 2px 8px rgba(5, 9, 18, 0.28);
+            --shadow-md: 0 8px 22px rgba(5, 9, 18, 0.32);
+            --shadow-lg: 0 16px 42px rgba(5, 9, 18, 0.4);
+            --shadow-xl: 0 24px 60px rgba(5, 9, 18, 0.46);
+            --radius-sm: 10px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 26px;
+            --radius-full: 50px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            margin: 0;
+            background: var(--night);
+            background-image:
+                radial-gradient(ellipse at 15% 8%, rgba(207, 154, 76, 0.10) 0%, transparent 45%),
+                radial-gradient(ellipse at 85% 15%, rgba(79, 133, 119, 0.09) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(193, 68, 42, 0.07) 0%, transparent 55%),
+                radial-gradient(1.5px 1.5px at 8% 12%, rgba(237, 197, 128, .55), transparent),
+                radial-gradient(1px 1px at 22% 32%, rgba(237, 197, 128, .4), transparent),
+                radial-gradient(1.5px 1.5px at 38% 6%, rgba(237, 197, 128, .5), transparent),
+                radial-gradient(1px 1px at 54% 22%, rgba(183, 196, 220, .4), transparent),
+                radial-gradient(1.5px 1.5px at 68% 9%, rgba(237, 197, 128, .45), transparent),
+                radial-gradient(1px 1px at 79% 28%, rgba(183, 196, 220, .35), transparent),
+                radial-gradient(1.5px 1.5px at 91% 14%, rgba(237, 197, 128, .5), transparent),
+                radial-gradient(1px 1px at 12% 55%, rgba(183, 196, 220, .3), transparent),
+                radial-gradient(1px 1px at 88% 60%, rgba(183, 196, 220, .3), transparent),
+                linear-gradient(180deg, var(--night) 0%, var(--night) 40%, var(--night-deep) 100%);
+            background-attachment: fixed;
+            color: var(--mist);
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overscroll-behavior-y: contain;
+        }
+
+        .kurdish {
+            font-family: 'Vazirmatn', sans-serif;
+            direction: rtl;
+            unicode-bidi: isolate;
+        }
+        .chinese {
+            font-family: 'Noto Serif SC', serif;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ── HERO ── */
+        header.hero {
+            background: linear-gradient(170deg, #0d1728 0%, #101f38 35%, #0e1c33 65%, #0a1424 100%);
+            color: var(--paper);
+            padding: clamp(2.5rem, 8vw, 4.5rem) clamp(1rem, 6vw, 3rem) clamp(2rem, 6vw, 4rem);
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            border-bottom: 1px solid var(--night-line);
+        }
+        header.hero::after {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border: 1px solid rgba(207, 154, 76, 0.28);
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        header.hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 15%, rgba(207, 154, 76, 0.14) 0%, transparent 55%),
+                radial-gradient(ellipse at 78% 65%, rgba(79, 133, 119, 0.10) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        header.hero>* {
+            position: relative;
+            z-index: 1;
+        }
+        .eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(0.68rem, 1.5vw, 0.78rem);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold-bright);
+            margin: 0 0 0.8rem;
+            opacity: 0.9;
+        }
+        h1.title {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.8rem, 5vw, 3.2rem);
+            line-height: 1.08;
+            margin: 0 0 0.9rem;
+            max-width: 14ch;
+            letter-spacing: -0.01em;
+        }
+        h1.title .kurdish {
+            display: block;
+            font-style: normal;
+            font-size: 0.58em;
+            color: var(--vermilion-light);
+            font-weight: 600;
+            margin-top: 0.35rem;
+            letter-spacing: 0;
+        }
+        .hero-sub {
+            max-width: 44ch;
+            font-size: clamp(0.9rem, 2vw, 1.05rem);
+            color: var(--mist-dim);
+            margin: 0 0 1.8rem;
+            line-height: 1.5;
+        }
+        .hero-sub strong {
+            color: var(--paper);
+            font-weight: 600;
+        }
+        .hero-motif {
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            width: clamp(150px, 32vw, 210px);
+            height: clamp(150px, 32vw, 210px);
+            opacity: 0.16;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .journey {
+            max-width: 600px;
+            margin-top: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .journey svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* ── MAIN ── */
+        main {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 clamp(0.8rem, 4vw, 2rem);
+        }
+        section {
+            padding: clamp(2rem, 5vw, 3.2rem) 0;
+            border-bottom: 1px solid var(--night-line);
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+        h2.section-title {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            margin: 0 0 0.3rem;
+            color: var(--paper);
+            letter-spacing: -0.01em;
+        }
+        .section-lede {
+            color: var(--mist-dim);
+            max-width: 56ch;
+            margin: 0 0 1.6rem;
+            font-size: clamp(0.85rem, 1.8vw, 0.96rem);
+            line-height: 1.55;
+        }
+
+        /* ── STAMPS ── */
+        .stamp-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        @media (min-width: 500px) {
+            .stamp-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+        }
+        @media (min-width: 700px) {
+            .stamp-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 14px;
+            }
+        }
+        .stamp {
+            background: var(--paper-card);
+            border: 1.5px dashed var(--gold-dim);
+            border-radius: var(--radius-md);
+            padding: clamp(0.8rem, 2vw, 1.1rem) clamp(0.6rem, 1.5vw, 1rem);
+            cursor: pointer;
+            text-align: left;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            font-family: 'Work Sans', sans-serif;
+            min-height: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .stamp:nth-child(odd) { transform: rotate(-0.6deg); }
+        .stamp:nth-child(even) { transform: rotate(0.6deg); }
+        .stamp:active {
+            transform: scale(0.97);
+            transition: transform 0.08s ease;
+        }
+        .stamp:hover {
+            border-color: var(--vermilion);
+            border-style: solid;
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px) rotate(0deg);
+        }
+        .stamp.active {
+            background: var(--vermilion);
+            border-style: solid;
+            border-color: var(--vermilion-deep);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-1px) rotate(0deg);
+        }
+        .stamp.active::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(244, 232, 206, 0.55);
+        }
+        .stamp.active .stamp-title,
+        .stamp.active .stamp-count {
+            color: var(--paper);
+        }
+        .stamp.active .stamp-icon {
+            filter: brightness(1.3);
+        }
+        .stamp-icon {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: 0.35rem;
+            transition: transform 0.2s ease;
+            color: var(--vermilion-deep);
+        }
+        .stamp.active .stamp-icon {
+            color: var(--paper);
+        }
+        .stamp:hover .stamp-icon {
+            transform: scale(1.1);
+        }
+        .stamp-title {
+            font-weight: 600;
+            font-size: clamp(0.8rem, 1.8vw, 0.92rem);
+            color: var(--ink);
+            display: block;
+            margin-bottom: 0.15rem;
+            line-height: 1.2;
+        }
+        .stamp-count {
+            font-size: clamp(0.68rem, 1.4vw, 0.76rem);
+            color: var(--ink-soft);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ── PROGRESS ── */
+        .progress-bar {
+            height: 6px;
+            background: var(--night-mid);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1.4rem 0 0;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--night-line);
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--vermilion), var(--gold));
+            width: 0%;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 4px;
+        }
+        .progress-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--mist-dim);
+            margin-top: 0.45rem;
+        }
+
+        /* ── FLASHCARD ── */
+        .card-wrap {
+            margin-top: 1.6rem;
+        }
+        .flashcard {
+            background: var(--paper-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--line);
+            min-height: clamp(190px, 40vh, 250px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: clamp(2rem, 4vw, 2.8rem) clamp(1rem, 3vw, 2rem);
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            box-shadow: var(--shadow-lg);
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        /* punched perforation along the top edge, like a torn ticket stub */
+        .flashcard::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 14px;
+            right: 14px;
+            height: 16px;
+            background-image: radial-gradient(circle 8px at 16px 0, var(--night) 8px, transparent 8.5px);
+            background-size: 32px 16px;
+            background-repeat: repeat-x;
+            background-position: center top;
+            pointer-events: none;
+        }
+        .flashcard:active {
+            transform: scale(0.985);
+            transition: transform 0.06s ease;
+        }
+        .flashcard:hover {
+            transform: translateY(-3px);
+            border-color: var(--vermilion);
+            box-shadow: var(--shadow-xl);
+        }
+        .flashcard .tag {
+            position: absolute;
+            top: 1.1rem;
+            left: 1.1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--vermilion-deep);
+            letter-spacing: 0.09em;
+            background: transparent;
+            padding: 0.28rem 0.65rem;
+            border: 1.5px solid var(--vermilion);
+            border-radius: 20px;
+            font-weight: 600;
+            transform: rotate(-3deg);
+        }
+        .flashcard .flip-hint {
+            position: absolute;
+            top: 1.15rem;
+            right: 1.1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.66rem;
+            color: var(--gold-dim);
+            opacity: 0.85;
+            transition: opacity 0.2s ease;
+        }
+        .flashcard:hover .flip-hint {
+            opacity: 1;
+        }
+        .word-en {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            font-weight: 500;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+        .word-zh {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(1.4rem, 3.2vw, 1.8rem);
+            margin-top: 0.4rem;
+            color: var(--jade-deep);
+            font-weight: 600;
+        }
+        .word-pinyin {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+            opacity: 0.75;
+            margin-top: 0.2rem;
+            letter-spacing: 0.03em;
+        }
+        .word-ku {
+            font-family: 'Vazirmatn', sans-serif;
+            direction: rtl;
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            color: var(--vermilion);
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+        .word-ku-latin {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+            opacity: 0.75;
+            margin-top: 0.2rem;
+            letter-spacing: 0.03em;
+        }
+
+        /* ── CARD NAV ── */
+        .card-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .nav-btns {
+            display: flex;
+            gap: 8px;
+        }
+        button.pill {
+            font-family: 'Work Sans', sans-serif;
+            font-size: clamp(0.78rem, 1.6vw, 0.85rem);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            border: 1.5px solid var(--gold-dim);
+            background: var(--night-mid);
+            color: var(--gold-bright);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-height: 40px;
+            min-width: 44px;
+        }
+        button.pill:hover {
+            background: var(--gold);
+            color: var(--night-deep);
+            border-color: var(--gold);
+        }
+        button.pill:active {
+            transform: scale(0.95);
+            transition: transform 0.06s ease;
+        }
+        button.pill.primary {
+            background: var(--vermilion);
+            color: var(--paper);
+            border-color: var(--vermilion-deep);
+            font-weight: 600;
+        }
+        button.pill.primary:hover {
+            background: var(--vermilion-deep);
+            border-color: var(--vermilion-deep);
+            color: var(--paper);
+        }
+        button.pill.ai-btn {
+            border-color: var(--gold);
+            border-style: dashed;
+            color: var(--gold-bright);
+            font-size: clamp(0.74rem, 1.5vw, 0.8rem);
+            padding: 0.4rem 0.85rem;
+            background: rgba(207, 154, 76, 0.08);
+        }
+        button.pill.ai-btn:hover {
+            background: var(--vermilion);
+            color: var(--paper);
+            border-color: var(--vermilion);
+        }
+        button.pill.ai-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* ── AI INSIGHT ── */
+        .ai-insight {
+            margin-top: 1rem;
+            padding: 0.9rem 1.1rem;
+            max-width: 460px;
+            text-align: center;
+            display: none;
+            background: var(--night-mid);
+            border-radius: var(--radius-md);
+            border: 1px dashed var(--gold-dim);
+            animation: fadeInUp 0.35s ease;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .ai-insight.visible {
+            display: block;
+        }
+        .ai-sentence {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--paper);
+            margin: 0 0 0.35rem;
+            font-weight: 500;
+        }
+        .ai-kurdish {
+            font-size: 1.1rem;
+            color: var(--vermilion-light);
+            margin: 0;
+            font-weight: 500;
+        }
+        .ai-error {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--vermilion-light);
+            margin: 0;
+        }
+
+        /* ── QUIZ ── */
+        .quiz-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .quiz-head .section-lede {
+            margin: 0;
+            flex: 1;
+            min-width: 200px;
+        }
+        .quiz-box {
+            background: var(--paper-card);
+            border-radius: var(--radius-lg);
+            border-top: 3px solid var(--gold);
+            border-left: 1px solid var(--line);
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            padding: clamp(1.2rem, 3vw, 1.8rem);
+            margin-top: 1.6rem;
+            box-shadow: var(--shadow-lg);
+        }
+        .quiz-prompt {
+            font-family: 'Fraunces', serif;
+            font-style: italic;
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            color: var(--ink);
+            min-height: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .quiz-options {
+            display: grid;
+            gap: 8px;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 450px) {
+            .quiz-options {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .quiz-opt {
+            text-align: left;
+            padding: clamp(0.65rem, 2vw, 0.8rem) 1rem;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--line);
+            background: var(--paper-dim);
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            direction: rtl;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            transition: all 0.18s ease;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: var(--ink);
+            position: relative;
+        }
+        .quiz-opt:hover {
+            border-color: var(--vermilion);
+            background: var(--paper-card);
+            box-shadow: var(--shadow-sm);
+        }
+        .quiz-opt:active {
+            transform: scale(0.97);
+            transition: transform 0.06s ease;
+        }
+        .quiz-opt.correct {
+            background: rgba(79, 133, 119, 0.14);
+            border-color: var(--jade);
+            color: var(--jade-deep);
+            font-weight: 600;
+            animation: pulseCorrect 0.5s ease;
+        }
+        .quiz-opt.correct::after {
+            content: '✓';
+            position: absolute;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid var(--vermilion);
+            color: var(--vermilion);
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-8deg);
+            animation: stampThump 0.4s ease;
+        }
+        .quiz-opt.wrong {
+            background: rgba(193, 68, 42, 0.1);
+            border-color: var(--vermilion);
+            color: var(--vermilion-deep);
+            animation: shake 0.4s ease;
+        }
+        .quiz-feedback {
+            margin-top: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+            min-height: 1.2em;
+            font-weight: 500;
+        }
+
+        @keyframes stampThump {
+            0% {
+                transform: scale(2.2) rotate(-8deg);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(0.9) rotate(-8deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(-8deg);
+                opacity: 1;
+            }
+        }
+        @keyframes pulseCorrect {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.03);
+            }
+        }
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-6px);
+            }
+            50% {
+                transform: translateX(6px);
+            }
+            75% {
+                transform: translateX(-3px);
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── CHAT ── */
+        .chat-box {
+            background: var(--paper-card);
+            border-radius: var(--radius-lg);
+            border-top: 3px solid var(--jade);
+            border-left: 1px solid var(--line);
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            padding: clamp(1rem, 3vw, 1.5rem);
+            margin-top: 0.8rem;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            max-height: 70vh;
+            min-height: 380px;
+        }
+        .chat-status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--jade-deep);
+            margin-bottom: 0.8rem;
+            padding: 0.35rem 0.7rem;
+            background: rgba(79, 133, 119, 0.1);
+            border-radius: 20px;
+            width: fit-content;
+        }
+        .chat-status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--jade);
+            animation: statusPulse 2s infinite;
+        }
+        @keyframes statusPulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.35;
+            }
+        }
+        .chat-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.3rem 0.2rem;
+            margin-bottom: 0.8rem;
+            min-height: 150px;
+            max-height: 400px;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .chat-messages:empty::before {
+            content: "👋 Ask something like: how do I say 'I miss my family' in Chinese?";
+            color: var(--ink-soft);
+            font-size: 0.85rem;
+            font-style: italic;
+            text-align: center;
+            padding: 2rem 1rem;
+            display: block;
+            opacity: 0.65;
+        }
+        .chat-messages::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--paper-dim);
+            border-radius: 10px;
+        }
+        .msg-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 7px;
+            animation: msgSlideIn 0.3s ease;
+        }
+        .msg-row.user {
+            justify-content: flex-end;
+        }
+        .msg-row.bot {
+            justify-content: flex-start;
+        }
+        @keyframes msgSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            font-weight: 600;
+            flex-shrink: 0;
+            letter-spacing: 0.03em;
+            box-shadow: var(--shadow-sm);
+        }
+        .avatar.bot {
+            background: var(--jade);
+            color: var(--paper);
+        }
+        .avatar.user {
+            background: var(--vermilion);
+            color: var(--paper);
+        }
+        .msg {
+            max-width: 80%;
+            padding: 0.6rem 0.9rem;
+            border-radius: 18px;
+            font-size: clamp(0.82rem, 1.7vw, 0.9rem);
+            line-height: 1.5;
+            word-break: break-word;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+        .msg.user {
+            background: var(--ink);
+            color: var(--paper);
+            border-bottom-right-radius: 4px;
+        }
+        .msg.bot {
+            background: var(--paper-dim);
+            color: var(--ink);
+            border-bottom-left-radius: 4px;
+            white-space: pre-wrap;
+            border: 1px solid var(--line);
+        }
+        .chat-input-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .chat-input-row input {
+            flex: 1;
+            padding: 0.65rem 1rem;
+            border-radius: var(--radius-full);
+            border: 1.5px solid var(--line-strong);
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.9rem;
+            background: var(--paper-dim);
+            color: var(--ink);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            min-height: 44px;
+            -webkit-appearance: none;
+        }
+        .chat-input-row input:focus {
+            outline: none;
+            border-color: var(--vermilion);
+            box-shadow: 0 0 0 3px rgba(193, 68, 42, 0.12);
+            background: var(--paper-card);
+        }
+        .chat-input-row button.pill.primary {
+            flex-shrink: 0;
+            padding: 0.55rem 1.2rem;
+            font-weight: 600;
+            min-height: 44px;
+            min-width: 60px;
+        }
+        .typing-dots {
+            display: inline-flex;
+            gap: 4px;
+            padding: 4px 0;
+            align-items: center;
+            justify-content: center;
+        }
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold-dim);
+            animation: blink 1.3s infinite ease-in-out;
+        }
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes blink {
+            0%,
+            80%,
+            100% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+            40% {
+                opacity: 1;
+                transform: scale(1.15);
+            }
+        }
+
+        /* ── CHIPS ── */
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin: 0 0 0.9rem;
+            padding: 0 0.1rem;
+        }
+        .chip {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.76rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 18px;
+            border: 1.5px solid var(--line-strong);
+            background: var(--paper-dim);
+            color: var(--ink-soft);
+            cursor: pointer;
+            transition: all 0.18s ease;
+            white-space: nowrap;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 36px;
+            font-weight: 500;
+        }
+        .chip:hover {
+            border-color: var(--vermilion);
+            background: var(--paper-card);
+            color: var(--vermilion-deep);
+            box-shadow: var(--shadow-sm);
+        }
+        .chip:active {
+            transform: scale(0.95);
+            transition: transform 0.06s ease;
+        }
+
+        /* ── CHAT HEADER ── */
+        .chat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .chat-header .progress-label {
+            margin: 0;
+            font-size: 0.7rem;
+        }
+        .clear-btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--ink-soft);
+            opacity: 0.6;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            padding: 4px 6px;
+            -webkit-tap-highlight-color: transparent;
+            transition: color 0.2s ease, opacity 0.2s ease;
+        }
+        .clear-btn:hover {
+            color: var(--vermilion);
+            opacity: 1;
+        }
+
+        /* ── LANG TOGGLE ── */
+        .lang-toggle {
+            display: inline-flex;
+            border: 1.5px solid var(--gold-dim);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-bottom: 1.4rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .lang-btn {
+            font-family: 'Work Sans', sans-serif;
+            font-size: clamp(0.78rem, 1.6vw, 0.85rem);
+            font-weight: 500;
+            padding: 0.45rem 1rem;
+            border: none;
+            background: var(--night-mid);
+            color: var(--mist);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 38px;
+            white-space: nowrap;
+        }
+        .lang-btn.active {
+            background: var(--vermilion);
+            color: var(--paper);
+            font-weight: 600;
+        }
+        .lang-btn:not(.active):hover {
+            background: var(--night);
+            color: var(--gold-bright);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 2rem clamp(0.8rem, 4vw, 2rem) 3rem;
+            color: var(--mist-dim);
+            font-size: 0.82rem;
+            max-width: 880px;
+            margin: 0 auto;
+            text-align: center;
+            border-top: 1px solid var(--night-line);
+        }
+        footer .kurdish {
+            display: block;
+            margin-top: 0.35rem;
+            color: var(--vermilion-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* ── REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── RESPONSIVE FINE-TUNING ── */
+        @media (max-width: 400px) {
+            .flashcard {
+                min-height: 170px;
+                padding: 1.2rem 0.8rem;
+            }
+            .flashcard .tag {
+                font-size: 0.64rem;
+                top: 0.6rem;
+                left: 0.6rem;
+                padding: 0.2rem 0.45rem;
+            }
+            .flashcard .flip-hint {
+                font-size: 0.6rem;
+                top: 0.6rem;
+                right: 0.6rem;
+            }
+            .stamp {
+                padding: 0.65rem 0.55rem;
+                min-height: 58px;
+                border-radius: var(--radius-sm);
+            }
+            .stamp-title {
+                font-size: 0.74rem;
+            }
+            .stamp-count {
+                font-size: 0.64rem;
+            }
+            .stamp-icon {
+                font-size: 1rem;
+                margin-bottom: 0.2rem;
+            }
+            .chat-box {
+                padding: 0.8rem;
+                min-height: 320px;
+                border-radius: var(--radius-md);
+            }
+            .msg {
+                max-width: 88%;
+                padding: 0.5rem 0.7rem;
+                font-size: 0.8rem;
+            }
+            button.pill {
+                padding: 0.4rem 0.7rem;
+                font-size: 0.74rem;
+                min-height: 36px;
+            }
+            .quiz-opt {
+                padding: 0.55rem 0.7rem;
+                font-size: 0.88rem;
+                min-height: 40px;
+            }
+            header.hero {
+                padding: 2rem 0.8rem 2.2rem;
+            }
+            h1.title {
+                font-size: 1.5rem;
+            }
+            .hero-sub {
+                font-size: 0.82rem;
+            }
+            .eyebrow {
+                font-size: 0.62rem;
+                letter-spacing: 0.1em;
+            }
+        }
+        @media (min-width: 640px) {
+            .flashcard {
+                min-height: 240px;
+            }
+            .chat-box {
+                min-height: 420px;
+            }
+            .chat-messages {
+                max-height: 500px;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                transition: none;
+                opacity: 1;
+                transform: none;
+            }
+            .flashcard,
+            .stamp,
+            .quiz-opt,
+            button.pill,
+            .chip {
+                transition: none;
+            }
+            .typing-dots span {
+                animation: none;
+            }
+            .msg-row {
+                animation: none;
+            }
+        }
+        @media (hover: none) and (pointer: coarse) {
+            .flashcard:hover {
+                transform: none;
+                box-shadow: var(--shadow-sm);
+                border-color: var(--line);
+            }
+            .stamp:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            .flashcard:active {
+                transform: scale(0.97);
+            }
+            .stamp:active {
+                transform: scale(0.96);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <p class="eyebrow">a study companion, built for one journey</p>
+        <h1 class="title">The path to China<span class="kurdish">ڕێگا بۆ چین</span></h1>
+        <p class="hero-sub">Sorani Kurdish → English → Chinese, side by side. <strong>Built for Zhwan</strong> — one flashcard, one stamp, one step closer to studying English in China.</p>
+        <svg class="hero-motif" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="100" cy="100" r="90" fill="none" stroke="#C1442A" stroke-width="2" />
+            <circle cx="100" cy="100" r="78" fill="none" stroke="#CF9A4C" stroke-width="0.8" />
+            <circle cx="100" cy="100" r="35" fill="none" stroke="#CF9A4C" stroke-width="0.6" />
+            <line x1="100" y1="14" x2="100" y2="186" stroke="#CF9A4C" stroke-width="0.4" />
+            <line x1="14" y1="100" x2="186" y2="100" stroke="#CF9A4C" stroke-width="0.4" />
+            <path d="M100 55 L112 100 L100 145 L88 100 Z" fill="none" stroke="#C1442A" stroke-width="1.4" />
+        </svg>
+        <div class="journey">
+            <svg viewBox="0 0 640 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A path from Kurdistan to China with progress stamps">
+                <line x1="20" y1="30" x2="620" y2="30" stroke="#CF9A4C" stroke-width="1.5" stroke-dasharray="1 10" stroke-linecap="round" opacity="0.6" />
+                <circle cx="20" cy="30" r="10" fill="#C1442A" />
+                <text x="20" y="52" text-anchor="middle" fill="#B7C4DC" font-family="JetBrains Mono, monospace" font-size="10">KRD</text>
+                <circle cx="620" cy="30" r="10" fill="#4F8577" />
+                <text x="620" y="52" text-anchor="middle" fill="#B7C4DC" font-family="JetBrains Mono, monospace" font-size="10">CHN</text>
+                <g id="journeyDot">
+                    <circle cx="20" cy="30" r="6" fill="#F4E8CE" />
+                </g>
+            </svg>
+        </div>
+    </header>
+
+    <main>
+        <section class="reveal">
+            <h2 class="section-title">Choose a stamp</h2>
+            <p class="section-lede">Every category is a stop on the way. Start with the built-in words, then generate as many more as you want with AI — the passport never runs out.</p>
+            <div class="lang-toggle" role="group" aria-label="Choose the language you're focusing on">
+                <button class="lang-btn active" data-lang="en" id="langEnBtn">Focus: English</button>
+                <button class="lang-btn" data-lang="zh" id="langZhBtn">Focus: Chinese</button>
+            </div>
+            <div class="stamp-grid" id="stampGrid"></div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <p class="progress-label" id="progressLabel">0 of 0 words seen</p>
+        </section>
+
+        <section class="reveal">
+            <h2 class="section-title">Flashcards</h2>
+            <p class="section-lede">Tap the card to flip between English / Chinese and Sorani Kurdish. Spellings follow common Sorani usage — double-check pronunciation with a native speaker when in doubt.</p>
+            <div class="card-wrap">
+                <div class="flashcard" id="flashcard">
+                    <span class="tag" id="cardTag">GREETINGS</span>
+                    <span class="flip-hint" id="flipHint">tap to flip</span>
+                    <div id="cardFace"></div>
+                </div>
+                <div class="card-nav">
+                    <span class="progress-label" id="cardCounter">1 / 8</span>
+                    <div class="nav-btns">
+                        <button class="pill" id="prevBtn">← back</button>
+                        <button class="pill primary" id="nextBtn">next →</button>
+                    </div>
+                </div>
+                <div style="text-align:center; margin-top:1rem; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+                    <button class="pill ai-btn" id="aiExampleBtn">✨ Ask AI for an example</button>
+                    <button class="pill ai-btn" id="aiMoreWordsBtn">✨ Generate 5 more words</button>
+                </div>
+                <div class="ai-insight" id="aiInsight"></div>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2 class="section-title">Quick quiz</h2>
+            <div class="quiz-head">
+                <p class="section-lede" style="margin:0;">See the word, pick the matching Sorani Kurdish.</p>
+                <button class="pill ai-btn" id="aiQuizBtn">✨ AI question</button>
+            </div>
+            <div class="quiz-box">
+                <p class="quiz-prompt" id="quizPrompt"></p>
+                <div class="quiz-options" id="quizOptions"></div>
+                <p class="quiz-feedback" id="quizFeedback"></p>
+            </div>
+        </section>
+    </main>
+
+    <section class="reveal" style="max-width:880px;margin:0 auto;padding:0 clamp(0.8rem,4vw,2rem) clamp(2rem,5vw,3.2rem);">
+        <h2 class="section-title">Ask your tutor</h2>
+        <p class="section-lede">A quick-question tutor for English, Chinese, or anything in between — powered by Groq's Llama model. Just ask and learn.</p>
+        <div class="chat-box">
+            <div class="chat-status">
+                <span class="chat-status-dot"></span> tutor · llama-3.3-70b · ready
+            </div>
+            <div class="chat-header">
+                <span class="progress-label" style="margin:0;">conversation with your AI tutor</span>
+                <button class="clear-btn" id="clearChatBtn">clear conversation</button>
+            </div>
+            <div class="chip-row" id="chipRow"></div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input-row">
+                <input type="text" id="chatInput" placeholder="Ask about a word, grammar, or how to say something..." autocomplete="off" />
+                <button class="pill primary" id="chatSendBtn">Send</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        Made with care for a friend chasing a dream.
+        <span class="kurdish">بۆ هاوڕێیەکم دروستکراوە کە خەونێکی گەورەی هەیە</span>
+    </footer>
+
+    <script type="application/json" id="vocabData">
+        {
+            "greetings": {
+                "icon": "☀",
+                "title": "Greetings",
+                "words": [
+                    { "en": "Hello", "zh": "你好", "py": "nǐ hǎo", "ku": "سڵاو", "kuLatin": "silaw" },
+                    { "en": "Thank you", "zh": "谢谢", "py": "xièxiè", "ku": "سوپاس", "kuLatin": "spas" },
+                    { "en": "Goodbye", "zh": "再见", "py": "zàijiàn", "ku": "خوا حافیز", "kuLatin": "xwa hafiz" },
+                    { "en": "Yes", "zh": "是", "py": "shì", "ku": "بەڵێ", "kuLatin": "belê" },
+                    { "en": "No", "zh": "不", "py": "bù", "ku": "نەخێر", "kuLatin": "nexêr" },
+                    { "en": "Please", "zh": "请", "py": "qǐng", "ku": "تکایە", "kuLatin": "tikaye" },
+                    { "en": "Sorry", "zh": "对不起", "py": "duìbùqǐ", "ku": "ببورە", "kuLatin": "bibûre" },
+                    { "en": "Good morning", "zh": "早上好", "py": "zǎoshang hǎo", "ku": "بەیانیت باش",
+                    "kuLatin": "beyanit baş" }
+                ]
+            },
+            "numbers": {
+                "icon": "#",
+                "title": "Numbers",
+                "words": [
+                    { "en": "One", "zh": "一", "py": "yī", "ku": "یەک", "kuLatin": "yek" },
+                    { "en": "Two", "zh": "二", "py": "èr", "ku": "دوو", "kuLatin": "dû" },
+                    { "en": "Three", "zh": "三", "py": "sān", "ku": "سێ", "kuLatin": "sê" },
+                    { "en": "Four", "zh": "四", "py": "sì", "ku": "چوار", "kuLatin": "çwar" },
+                    { "en": "Five", "zh": "五", "py": "wǔ", "ku": "پێنج", "kuLatin": "pênc" },
+                    { "en": "Ten", "zh": "十", "py": "shí", "ku": "دە", "kuLatin": "de" }
+                ]
+            },
+            "university": {
+                "icon": "✎",
+                "title": "University",
+                "words": [
+                    { "en": "Student", "zh": "学生", "py": "xuéshēng", "ku": "خوێندکار", "kuLatin": "xwêndkar" },
+                    { "en": "Teacher", "zh": "老师", "py": "lǎoshī", "ku": "مامۆستا", "kuLatin": "mamosta" },
+                    { "en": "University", "zh": "大学", "py": "dàxué", "ku": "زانکۆ", "kuLatin": "zanko" },
+                    { "en": "Book", "zh": "书", "py": "shū", "ku": "کتێب", "kuLatin": "kitêb" },
+                    { "en": "To study", "zh": "学习", "py": "xuéxí", "ku": "خوێندن", "kuLatin": "xwêndin" },
+                    { "en": "Language", "zh": "语言", "py": "yǔyán", "ku": "زمان", "kuLatin": "ziman" },
+                    { "en": "Dream", "zh": "梦想", "py": "mèngxiǎng", "ku": "خەون", "kuLatin": "xewn" }
+                ]
+            },
+            "travel": {
+                "icon": "→",
+                "title": "Travel & daily life",
+                "words": [
+                    { "en": "Airport", "zh": "机场", "py": "jīchǎng", "ku": "فڕۆکەخانە", "kuLatin": "firokexane" },
+                    { "en": "Passport", "zh": "护照", "py": "hùzhào", "ku": "پاسپۆرت", "kuLatin": "pasport" },
+                    { "en": "City", "zh": "城市", "py": "chéngshì", "ku": "شار", "kuLatin": "şar" },
+                    { "en": "Family", "zh": "家人", "py": "jiārén", "ku": "خێزان", "kuLatin": "xêzan" },
+                    { "en": "Friend", "zh": "朋友", "py": "péngyou", "ku": "هاوڕێ", "kuLatin": "hawrê" },
+                    { "en": "Food", "zh": "食物", "py": "shíwù", "ku": "خواردن", "kuLatin": "xwardin" },
+                    { "en": "Water", "zh": "水", "py": "shuǐ", "ku": "ئاو", "kuLatin": "aw" }
+                ]
+            }
+        }
+    </script>
+
+    <script>
+        const VOCAB = JSON.parse(document.getElementById('vocabData').textContent);
+        const GROQ_API_KEY = "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";
+        const GROQ_MODEL = "llama-3.3-70b-versatile";
+        const SYSTEM_PROMPT =
+            "You are a warm, patient language tutor helping Zhwan, a Sorani Kurdish speaker whose major is English and who dreams of studying in China. Answer questions about English and Chinese vocabulary, grammar, and pronunciation. Keep answers short, clear, and encouraging - a few sentences, not an essay. When it's useful, add the Sorani Kurdish translation too.";
+
+        const categories = Object.keys(VOCAB);
+        let currentCat = categories[0];
+        let currentIdx = 0;
+        let flipped = false;
+        let seen = new Set();
+        let targetLang = 'en';
+        let chatHistory = [];
+
+        function totalWords() {
+            return categories.reduce((sum, c) => sum + VOCAB[c].words.length, 0);
+        }
+
+        function renderStamps() {
+            const grid = document.getElementById('stampGrid');
+            grid.innerHTML = '';
+            categories.forEach(cat => {
+                const data = VOCAB[cat];
+                const div = document.createElement('div');
+                div.className = 'stamp' + (cat === currentCat ? ' active' : '');
+                div.innerHTML =
+                    `<div class="stamp-icon">${data.icon}</div><span class="stamp-title">${data.title}</span><span class="stamp-count">${data.words.length} words</span>`;
+                div.onclick = () => { currentCat = cat;
+                    currentIdx = 0;
+                    flipped = false;
+                    renderAll(); };
+                grid.appendChild(div);
+            });
+        }
+
+        function renderCard() {
+            const word = VOCAB[currentCat].words[currentIdx];
+            document.getElementById('cardTag').textContent = VOCAB[currentCat].title.toUpperCase();
+            const face = document.getElementById('cardFace');
+            seen.add(currentCat + currentIdx);
+            document.getElementById('aiInsight').classList.remove('visible');
+            document.getElementById('aiInsight').innerHTML = '';
+            if (!flipped) {
+                if (targetLang === 'en') {
+                    face.innerHTML =
+                        `<div class="word-en">${word.en}</div><div class="word-zh">${word.zh}</div><div class="word-pinyin">${word.py}</div>`;
+                } else {
+                    face.innerHTML =
+                        `<div class="word-zh" style="font-size:1.9rem;">${word.zh}</div><div class="word-pinyin" style="font-size:0.95rem;">${word.py}</div><div class="word-en" style="font-size:1.1rem;margin-top:0.35rem;">${word.en}</div>`;
+                }
+            } else {
+                face.innerHTML =
+                    `<div class="word-ku">${word.ku}</div><div class="word-ku-latin">${word.kuLatin}</div>`;
+            }
+            document.getElementById('cardCounter').textContent =
+                `${currentIdx+1} / ${VOCAB[currentCat].words.length}`;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const total = totalWords();
+            const pct = Math.round((seen.size / total) * 100);
+            document.getElementById('progressFill').style.width = pct + '%';
+            document.getElementById('progressLabel').textContent = `${seen.size} of ${total} words seen`;
+            const dot = document.getElementById('journeyDot');
+            const x = 20 + (600 * pct / 100);
+            dot.innerHTML = `<circle cx="${x}" cy="30" r="6" fill="#F4E8CE"><animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite"/></circle>`;
+        }
+
+        function renderQuiz() {
+            const words = VOCAB[currentCat].words;
+            const correctIdx = Math.floor(Math.random() * words.length);
+            const correct = words[correctIdx];
+            let options = [correct];
+            while (options.length < Math.min(4, words.length)) {
+                const cand = words[Math.floor(Math.random() * words.length)];
+                if (!options.includes(cand)) options.push(cand);
+            }
+            options.sort(() => Math.random() - 0.5);
+            const promptWord = targetLang === 'en' ? correct.en :
+                `<span class="chinese">${correct.zh}</span> <span class="word-pinyin">(${correct.py})</span>`;
+            document.getElementById('quizPrompt').innerHTML = promptWord;
+            const optDiv = document.getElementById('quizOptions');
+            optDiv.innerHTML = '';
+            document.getElementById('quizFeedback').textContent = '';
+            options.forEach(opt => {
+                const btn = document.createElement('div');
+                btn.className = 'quiz-opt';
+                btn.textContent = opt.ku;
+                btn.onclick = () => {
+                    const allOpts = optDiv.querySelectorAll('.quiz-opt');
+                    allOpts.forEach(o => o.onclick = null);
+                    if (opt === correct) {
+                        btn.classList.add('correct');
+                        document.getElementById('quizFeedback').textContent = '✓ right — ' + correct
+                            .kuLatin;
+                    } else {
+                        btn.classList.add('wrong');
+                        allOpts.forEach(o => { if (o.textContent === correct.ku) o.classList.add(
+                                'correct'); });
+                        document.getElementById('quizFeedback').textContent =
+                            '✗ not quite — it was ' + correct.kuLatin;
+                    }
+                    setTimeout(renderQuiz, 1500);
+                };
+                optDiv.appendChild(btn);
+            });
+        }
+
+        function renderChips() {
+            const row = document.getElementById('chipRow');
+            const cat = VOCAB[currentCat];
+            const sample = cat.words[Math.floor(Math.random() * cat.words.length)];
+            const chips = [
+                `How do I use "${targetLang==='en' ? sample.en : sample.zh}" in a sentence?`,
+                `Give me 3 more ${cat.title.toLowerCase()} words`,
+                targetLang === 'en' ? 'How do I introduce myself in English?' :
+                'How do I introduce myself in Chinese?',
+                'What are common mistakes Kurdish speakers make in English?'
+            ];
+            row.innerHTML = '';
+            chips.forEach(text => {
+                const chip = document.createElement('button');
+                chip.className = 'chip';
+                chip.textContent = text;
+                chip.onclick = () => {
+                    document.getElementById('chatInput').value = text;
+                    sendChat();
+                    document.getElementById('chatInput').focus();
+                };
+                row.appendChild(chip);
+            });
+        }
+
+        function renderAll() {
+            renderStamps();
+            renderCard();
+            renderQuiz();
+            renderChips();
+        }
+
+        document.getElementById('langEnBtn').onclick = () => {
+            targetLang = 'en';
+            document.getElementById('langEnBtn').classList.add('active');
+            document.getElementById('langZhBtn').classList.remove('active');
+            flipped = false;
+            renderCard();
+            renderQuiz();
+        };
+        document.getElementById('langZhBtn').onclick = () => {
+            targetLang = 'zh';
+            document.getElementById('langZhBtn').classList.add('active');
+            document.getElementById('langEnBtn').classList.remove('active');
+            flipped = false;
+            renderCard();
+            renderQuiz();
+        };
+
+        document.getElementById('flashcard').onclick = () => {
+            flipped = !flipped;
+            renderCard();
+        };
+        document.getElementById('nextBtn').onclick = async (e) => {
+            e.stopPropagation();
+            const words = VOCAB[currentCat].words;
+            if (currentIdx === words.length - 1) {
+                const face = document.getElementById('cardFace');
+                const prevHTML = face.innerHTML;
+                face.innerHTML =
+                    '<span class="typing-dots"><span></span><span></span><span></span></span>';
+                try {
+                    await generateMoreWords(currentCat, 5);
+                    currentIdx = currentIdx + 1;
+                } catch (err) {
+                    face.innerHTML = prevHTML;
+                    currentIdx = 0;
+                }
+            } else {
+                currentIdx = (currentIdx + 1) % VOCAB[currentCat].words.length;
+            }
+            flipped = false;
+            renderCard();
+            renderStamps();
+        };
+        document.getElementById('prevBtn').onclick = (e) => {
+            e.stopPropagation();
+            currentIdx = (currentIdx - 1 + VOCAB[currentCat].words.length) % VOCAB[currentCat].words
+                .length;
+            flipped = false;
+            renderCard();
+        };
+
+        renderAll();
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        async function callGroq(messages) {
+            const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + GROQ_API_KEY
+                },
+                body: JSON.stringify({
+                    model: GROQ_MODEL,
+                    messages: messages,
+                    max_tokens: 400,
+                    temperature: 0.7
+                })
+            });
+            const data = await res.json();
+            if (data.error) throw new Error(data.error.message);
+            return data.choices[0].message.content;
+        }
+
+        function parseAIJson(raw) {
+            const clean = raw.replace(/```json|```/g, '').trim();
+            return JSON.parse(clean);
+        }
+
+        async function askAIExample() {
+            const word = VOCAB[currentCat].words[currentIdx];
+            const target = targetLang === 'en' ? word.en : word.zh;
+            const panel = document.getElementById('aiInsight');
+            const btn = document.getElementById('aiExampleBtn');
+            btn.disabled = true;
+            panel.classList.add('visible');
+            panel.innerHTML =
+                '<span class="typing-dots"><span></span><span></span><span></span></span>';
+            try {
+                const raw = await callGroq([
+                    { role: 'system',
+                        content: 'You are a concise bilingual tutor. Respond ONLY with JSON in this exact shape: {"sentence":"...", "kurdish":"..."}. No markdown, no extra text.' },
+                    { role: 'user',
+                        content: `Write one short, simple example sentence in ${targetLang==='en' ? 'English' : 'Chinese, with pinyin in parentheses right after'} using the word "${target}". Then give its Sorani Kurdish translation.` }
+                ]);
+                const parsed = parseAIJson(raw);
+                panel.innerHTML =
+                    `<p class="ai-sentence">${parsed.sentence}</p><p class="ai-kurdish kurdish">${parsed.kurdish}</p>`;
+            } catch (err) {
+                panel.innerHTML =
+                    `<p class="ai-error">Could not reach AI: ${err.message}. Check your connection and try again.</p>`;
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        async function generateMoreWords(catKey, count) {
+            const cat = VOCAB[catKey];
+            const known = cat.words.map(w => w.en).join(', ');
+            const raw = await callGroq([
+                { role: 'system',
+                    content: 'You are a vocabulary generator for a language app. Respond ONLY with a JSON array, no markdown, no extra text, no explanation. Each item must look exactly like: {"en":"...", "zh":"...", "py":"...", "ku":"...", "kuLatin":"..."} where en is an English word or short phrase, zh is its Chinese translation, py is the pinyin, ku is the Sorani Kurdish translation written in Kurdish (Arabic-based) script, and kuLatin is a simple Latin-letter transliteration of that Kurdish word.' },
+                { role: 'user',
+                    content: `Category: "${cat.title}". Give me ${count} new, useful words or short phrases for this category, all different from these already-known English words: ${known}. Keep them relevant to a Kurdish student studying English who plans to study in China.` }
+            ]);
+            const parsed = parseAIJson(raw);
+            if (!Array.isArray(parsed) || parsed.length === 0) throw new Error('empty');
+            cat.words.push(...parsed);
+            return parsed;
+        }
+
+        async function handleGenerateMoreWords() {
+            const btn = document.getElementById('aiMoreWordsBtn');
+            const face = document.getElementById('cardFace');
+            btn.disabled = true;
+            const prevHTML = face.innerHTML;
+            face.innerHTML =
+                '<span class="typing-dots"><span></span><span></span><span></span></span>';
+            try {
+                await generateMoreWords(currentCat, 5);
+                renderStamps();
+                renderCard();
+            } catch (err) {
+                face.innerHTML = prevHTML;
+                document.getElementById('aiInsight').classList.add('visible');
+                document.getElementById('aiInsight').innerHTML =
+                    `<p class="ai-error">Could not generate new words: ${err.message}. Try again.</p>`;
+            } finally {
+                btn.disabled = false;
+            }
+        }
+        document.getElementById('aiMoreWordsBtn').onclick = (e) => { e.stopPropagation();
+            handleGenerateMoreWords(); };
+        document.getElementById('aiExampleBtn').onclick = (e) => { e.stopPropagation();
+            askAIExample(); };
+
+        async function askAIQuiz() {
+            const cat = VOCAB[currentCat];
+            const btn = document.getElementById('aiQuizBtn');
+            btn.disabled = true;
+            document.getElementById('quizPrompt').innerHTML =
+                '<span class="typing-dots"><span></span><span></span><span></span></span>';
+            document.getElementById('quizOptions').innerHTML = '';
+            document.getElementById('quizFeedback').textContent = '';
+            try {
+                const known = cat.words.map(w => `${targetLang==='en' ? w.en : w.zh} = ${w.ku}`).join(
+                    ', ');
+                const raw = await callGroq([
+                    { role: 'system',
+                        content: 'You are a quiz generator. Respond ONLY with JSON in this exact shape: {"prompt":"...", "options":["...","...","...","..."], "correctIndex":0}. "prompt" is one word in the target language. "options" are 4 Sorani Kurdish words, one of which is correct. No markdown, no extra text.' },
+                    { role: 'user',
+                        content: `Category: ${cat.title}. Known word pairs: ${known}. Target language: ${targetLang==='en' ? 'English' : 'Chinese'}. Create one new multiple-choice question using a word from this category (can be a new word, not just from the list).` }
+                ]);
+                const parsed = parseAIJson(raw);
+                renderAIQuizQuestion(parsed);
+            } catch (err) {
+                document.getElementById('quizFeedback').textContent =
+                    'Could not generate a question: ' + err.message;
+                renderQuiz();
+            } finally {
+                btn.disabled = false;
+            }
+        }
+        document.getElementById('aiQuizBtn').onclick = askAIQuiz;
+
+        function renderAIQuizQuestion(parsed) {
+            document.getElementById('quizPrompt').textContent = parsed.prompt;
+            const optDiv = document.getElementById('quizOptions');
+            optDiv.innerHTML = '';
+            document.getElementById('quizFeedback').textContent = '';
+            parsed.options.forEach((opt, i) => {
+                const btn = document.createElement('div');
+                btn.className = 'quiz-opt';
+                btn.textContent = opt;
+                btn.onclick = () => {
+                    const allOpts = optDiv.querySelectorAll('.quiz-opt');
+                    allOpts.forEach(o => o.onclick = null);
+                    if (i === parsed.correctIndex) {
+                        btn.classList.add('correct');
+                        document.getElementById('quizFeedback').textContent = '✓ right!';
+                    } else {
+                        btn.classList.add('wrong');
+                        allOpts[parsed.correctIndex].classList.add('correct');
+                        document.getElementById('quizFeedback').textContent = '✗ not quite.';
+                    }
+                    setTimeout(renderQuiz, 1600);
+                };
+                optDiv.appendChild(btn);
+            });
+        }
+
+        function addMessage(text, who) {
+            const row = document.createElement('div');
+            row.className = 'msg-row ' + who;
+            const avatar = document.createElement('div');
+            avatar.className = 'avatar ' + who;
+            avatar.textContent = who === 'user' ? 'Z' : 'AI';
+            const bubble = document.createElement('div');
+            bubble.className = 'msg ' + who;
+            bubble.textContent = text;
+            if (who === 'user') { row.appendChild(bubble);
+                row.appendChild(avatar); } else { row.appendChild(avatar);
+                row.appendChild(bubble); }
+            document.getElementById('chatMessages').appendChild(row);
+            scrollChat();
+            return bubble;
+        }
+
+        function scrollChat() {
+            const box = document.getElementById('chatMessages');
+            requestAnimationFrame(() => { box.scrollTop = box.scrollHeight; });
+        }
+
+        document.getElementById('clearChatBtn').onclick = () => {
+            chatHistory = [];
+            document.getElementById('chatMessages').innerHTML = '';
+        };
+
+        async function sendChat() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            addMessage(text, 'user');
+            input.value = '';
+            chatHistory.push({ role: 'user', content: text });
+
+            const typingDiv = addMessage('', 'bot');
+            typingDiv.innerHTML =
+                '<span class="typing-dots"><span></span><span></span><span></span></span>';
+
+            try {
+                const reply = await callGroq([{ role: 'system', content: SYSTEM_PROMPT }, ...
+                    chatHistory
+                ]);
+                typingDiv.textContent = reply;
+                chatHistory.push({ role: 'assistant', content: reply });
+            } catch (err) {
+                typingDiv.textContent =
+                    'Connection error — please check your internet connection and try again.';
+            }
+            scrollChat();
+        }
+
+        document.getElementById('chatSendBtn').onclick = sendChat;
+        document.getElementById('chatInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendChat();
+            }
+        });
+
+        updateProgress();
+    </script>
+</body>
+</html>
